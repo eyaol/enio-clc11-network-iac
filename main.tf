@@ -17,6 +17,14 @@ resource "aws_flow_log" "flow_log_clc" {
   vpc_id               = aws_vpc.vpc_clc.id
 }
 
+resource "aws_default_security_group" "custom-sg" {
+  vpc_id = aws_vpc.vpc_clc.id
+  
+  tags = {
+    Name = "my-iac-sg"
+  }
+}
+
 ##################
 # PUBLIC SUBNETS #
 ##################
