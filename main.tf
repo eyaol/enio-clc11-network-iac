@@ -10,6 +10,13 @@ resource "aws_vpc" "vpc_clc" {
   }
 }
 
+resource "aws_flow_log" "flow_log_clc" {
+  log_destination      = "arn:aws:s3:::enio-clc11-tfstate"
+  log_destination_type = "s3"
+  traffic_type         = "ALL"
+  vpc_id               = aws_vpc.vpc_clc.id
+}
+
 ##################
 # PUBLIC SUBNETS #
 ##################
